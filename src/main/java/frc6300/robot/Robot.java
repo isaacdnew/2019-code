@@ -10,12 +10,16 @@ package frc6300.robot;
 
 import frc6300.robot.commands.ResetDrivetrainEncoders;
 import frc6300.robot.subsystems.Drivetrain;
+import frc6300.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Compressor; 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +29,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+	private Compressor compressor = new Compressor();
+	private Elevator elevator = new Elevator();
+
+
+
 	public static OI oi;
 
 	public final Drivetrain drivetrain = new Drivetrain();

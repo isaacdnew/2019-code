@@ -57,4 +57,5 @@ public class RobotMap {
 	public static final int LIFTER_MOTOR_1 = 9;
 	public static final int LIFTER_MOTOR_2 = 10;
 	public static final boolean LIFTER_INVERTED = false;
+	public static final int Liftpot = 7;
 }
