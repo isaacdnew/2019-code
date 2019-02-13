@@ -59,7 +59,7 @@ public class RobotMap {
 	public static final boolean LIFTER_INVERTED = false;
 	public static final int Liftpot = 7;
 
-	// COMPRESSOR 
+	// Solenoid Ports 
 	public static final int lClawSolPort1 = 6; 
 	public static final int lClawSolPort2 = 5;
 	public static final int rClawSolPort1 = 7;
