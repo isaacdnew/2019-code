@@ -3,15 +3,15 @@ package frc6300.robot.subsystems;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4048.swerve.drive.SwerveDrive;
 import org.usfirst.frc4048.swerve.math.CentricMode;
 import frc6300.robot.RobotMap;
-import frc6300.robot.commands.TeleDrive;
+import frc6300.robot.commands.teleop.TeleDrive;
 import org.usfirst.frc4048.swerve.drive.CanTalonSwerveEnclosure;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /*            --- LAYOUT ---
@@ -61,6 +61,8 @@ public class Drivetrain extends Subsystem {
 	private WPI_TalonSRX steerMotor3;
 	private WPI_TalonSRX steerMotor4;
 
+	double[] wheelAngles = new double[4];
+
 	private Gyro gyro = new ADXRS450_Gyro();
 	private CentricMode centricMode = CentricMode.ROBOT;
 
@@ -78,6 +80,11 @@ public class Drivetrain extends Subsystem {
 		driveMotor2.setInverted(RobotMap.DRIVETRAIN_DRIVE_2_INV);
 		driveMotor3.setInverted(RobotMap.DRIVETRAIN_DRIVE_3_INV);
 		driveMotor4.setInverted(RobotMap.DRIVETRAIN_DRIVE_4_INV);
+
+		driveMotor1.setNeutralMode(NeutralMode.Brake);
+		driveMotor2.setNeutralMode(NeutralMode.Brake);
+		driveMotor3.setNeutralMode(NeutralMode.Brake);
+		driveMotor4.setNeutralMode(NeutralMode.Brake);
 
 		steerMotor1 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_STEER_1);
 		steerMotor2 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_STEER_2);
@@ -140,18 +147,24 @@ public class Drivetrain extends Subsystem {
 
 	public void drive(double fwd, double strafe, double rotateCW) {
 		swerveDrive.move(fwd, strafe, rotateCW, gyro.getAngle());
-		SmartDashboard.putNumber("Wheel 1 Angle", steerMotor1.getSelectedSensorPosition());
-		SmartDashboard.putNumber("Wheel 2 Angle", steerMotor2.getSelectedSensorPosition());
-		SmartDashboard.putNumber("Wheel 3 Angle", steerMotor3.getSelectedSensorPosition());
-		SmartDashboard.putNumber("Wheel 4 Angle", steerMotor4.getSelectedSensorPosition());
+	}
+
+	public double[] getWheelAngles() {
+		wheelAngles[0] = steerMotor1.getSelectedSensorPosition();
+		wheelAngles[1] = steerMotor2.getSelectedSensorPosition();
+		wheelAngles[2] = steerMotor3.getSelectedSensorPosition();
+		wheelAngles[3] = steerMotor4.getSelectedSensorPosition();
+		return wheelAngles;
 	}
 
 	public double getHeading() {
-		return gyro.getAngle();
+		return gyro.getAngle() % 360;
 	}
 
 	public void calibrateGyro() {
+		System.out.println("Calibrating the gyro...");
 		gyro.calibrate();
+		System.out.println("Done calibrating the gyro.");
 	}
 
 	public void initDefaultCommand() {
