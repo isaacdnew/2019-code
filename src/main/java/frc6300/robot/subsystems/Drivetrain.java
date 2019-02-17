@@ -33,7 +33,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 */
 
 /**
- * Knight Of Ni's Swerve Drive
+ * Porg's Swerve Drive
  */
 public class Drivetrain extends Subsystem {
 	private CanTalonSwerveEnclosure swerveEnclosure1;
