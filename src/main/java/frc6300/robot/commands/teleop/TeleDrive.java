@@ -1,4 +1,4 @@
-package frc6300.robot.commands;
+package frc6300.robot.commands.teleop;
 
 import frc6300.robot.OI;
 import frc6300.robot.subsystems.Drivetrain;
@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleDrive extends Command {
 	private Drivetrain drivetrain;
 	private XboxController controller = OI.driveController;
-	
+
 	private double fwd;
 	private double strafe;
 	private double rotateCW;
-	
+
 	public TeleDrive(Drivetrain drivetrain) {
 		this.drivetrain = drivetrain;
 		requires(drivetrain);
@@ -33,7 +33,7 @@ public class TeleDrive extends Command {
 		fwd = OI.deadBand(controller.getY(Hand.kLeft));
 		strafe = OI.deadBand(controller.getX(Hand.kLeft));
 		rotateCW = OI.deadBand(controller.getX(Hand.kRight));
-		
+
 		drivetrain.drive(fwd, strafe, rotateCW);
 	}
 
