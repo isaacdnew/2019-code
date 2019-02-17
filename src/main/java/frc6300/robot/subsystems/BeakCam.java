@@ -2,7 +2,7 @@ package frc6300.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import frc6300.robot.ClawCamPipeline;
+import frc6300.robot.BeakCamPipeline;
 
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
@@ -12,8 +12,8 @@ import edu.wpi.first.vision.VisionThread;
 /**
  * The camera that looks at the cube from the claw (for human use only)
  */
-public class ClawCam extends Subsystem {
-	UsbCamera clawCam;
+public class BeakCam extends Subsystem {
+	UsbCamera beakCam;
 	final int imgWidth = 160;
 	final int imgHeight = 120;
 	final int fps = 20;
@@ -27,23 +27,23 @@ public class ClawCam extends Subsystem {
 	double lastTurnAngle = 0.0;
 	double turnAngle = 0.0;
 
-	public ClawCam(int port) {
-		clawCam = new UsbCamera("ClawCam", port);
-		clawCam.setResolution(imgWidth, imgHeight);
-		clawCam.setFPS(fps);
-		clawCam.setBrightness(brightness);
-		clawCam.setExposureAuto();
-		clawCam.setWhiteBalanceManual(whiteBalance);
+	public BeakCam(int port) {
+		beakCam = new UsbCamera("ClawCam", port);
 	}
 
 	public void startRecording() {
-		CameraServer.getInstance().startAutomaticCapture(clawCam);
+		beakCam.setResolution(imgWidth, imgHeight);
+		beakCam.setFPS(fps);
+		beakCam.setBrightness(brightness);
+		beakCam.setExposureAuto();
+		beakCam.setWhiteBalanceManual(whiteBalance);
+		CameraServer.getInstance().startAutomaticCapture(beakCam);
 	}
 
 	public void startProcessing() {
 		startRecording();
-		CvSource outputStream = CameraServer.getInstance().putVideo("ClawCam", imgWidth, imgHeight);
-		visionThread = new VisionThread(clawCam, new ClawCamPipeline(), pipeline -> {
+		CvSource outputStream = CameraServer.getInstance().putVideo("BeakCam", imgWidth, imgHeight);
+		visionThread = new VisionThread(beakCam, new BeakCamPipeline(), pipeline -> {
 			outputStream.putFrame(pipeline.blurOutput());
 		});
 		visionThread.start();
