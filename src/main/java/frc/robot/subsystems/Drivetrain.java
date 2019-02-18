@@ -176,6 +176,7 @@ public class Drivetrain extends Subsystem {
 		swerveEnclosure2.setEncPosition(0);
 		swerveEnclosure3.setEncPosition(0);
 		swerveEnclosure4.setEncPosition(0);
+		System.out.println("Drivetrain encoders have been reset.");
 	}
 
 	public void setCentricMode(CentricMode mode) {
