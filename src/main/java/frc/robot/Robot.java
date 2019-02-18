@@ -11,12 +11,9 @@ import frc.robot.commands.ResetDrivetrainEncoders;
 import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -29,28 +26,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	// Subsystems
 	public final Drivetrain drivetrain = new Drivetrain();
-
 	private final Elevator elevator = new Elevator();
-
 	private final HatchPanelBeak beak = new HatchPanelBeak();
 	private final BeakWrist beakWrist = new BeakWrist();
-
 	private final CargoClaw cargoClaw = new CargoClaw();
 	private final ClawWrist clawWrist = new ClawWrist();
 
 	// Cameras
-	// private CargoCam cargoCam = new CargoCam(0);
-	// private BeakCam beakCam = new BeakCam(1);
 	private final int imgWidth = 160;
 	private final int imgHeight = 120;
 
 	// Compressor
 	private final Compressor compressor = new Compressor();
 
-	// Other stuff
+	// Other
 	public static OI oi;
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -58,28 +48,24 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI(this);
-
-		// Initialize all subsystems
+		// Subsystems
 		drivetrain.init();
-
 		elevator.init();
-
 		cargoClaw.init();
 		clawWrist.init();
-
 		beak.init();
 		beakWrist.init();
 
-		// Init cameras
-		// cargoCam.startProcessing();
-		// beakCam.startProcessing();
+		// Cameras
 		CameraServer.getInstance().startAutomaticCapture("BeakCam", 0).setResolution(imgWidth, imgHeight);
 		CameraServer.getInstance().startAutomaticCapture("CargoCam", 1).setResolution(imgWidth, imgHeight);
 
-		// Other stuff to do
-		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		// Compressor
 		compressor.setClosedLoopControl(true);
+
+		// Other
+		oi = new OI(this);
+		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
 	}
 
 	/**
@@ -98,11 +84,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
-		}
 	}
 
 	/**
@@ -115,13 +96,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		}
 	}
 
 	/**
