@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
 	private final Compressor compressor = new Compressor();
 	public final Drivetrain drivetrain = new Drivetrain();
 	private final Elevator elevator = new Elevator();
+	private final CargoClaw cargoClaw = new CargoClaw();
 
 	// Cameras
 	private CargoCam cargoCam = new CargoCam(0);
@@ -47,11 +48,15 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI(this);
+
+		// Init all subsystems
 		drivetrain.init();
-		// m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Autonomous Command to Run:", m_chooser);
+		elevator.init();
+		cargoClaw.init();
+
+		// Other stuff to do
 		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		compressor.setClosedLoopControl(true);
 		cargoCam.startProcessing();
 		beakCam.startProcessing();
 	}
