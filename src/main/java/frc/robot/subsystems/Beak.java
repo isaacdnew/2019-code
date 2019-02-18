@@ -10,16 +10,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class HatchPanelBeak extends Subsystem {
+public class Beak extends Subsystem {
 	private WPI_TalonSRX m;
 
-	public HatchPanelBeak() {
+	public Beak() {
 	}
 
 	public void init() {
 		m = new WPI_TalonSRX(RobotMap.BEAK_MOTOR);
 		m.setInverted(RobotMap.BEAK_MOTOR_INVERTED);
-		m.configOpenloopRamp(0.5);
+		m.configOpenloopRamp(0);
 	}
 
 	public void move(double pwr) {

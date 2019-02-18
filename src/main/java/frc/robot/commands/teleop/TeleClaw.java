@@ -1,7 +1,7 @@
 package frc.robot.commands.teleop;
 
 import frc.robot.OI;
-import frc.robot.subsystems.CargoClaw;
+import frc.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class TeleClaw extends Command {
-	private CargoClaw claw;
+	private Claw claw;
 	private XboxController controller = OI.liftController;
 
-	public TeleClaw(CargoClaw claw) {
+	public TeleClaw(Claw claw) {
 		this.claw = claw;
 		requires(claw);
 	}
@@ -25,7 +25,7 @@ public class TeleClaw extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		claw.move(controller.getTriggerAxis(Hand.kRight) - controller.getTriggerAxis(Hand.kLeft));
+		claw.move(-OI.deadBand(controller.getY(Hand.kRight)));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
