@@ -48,9 +48,12 @@ public class RobotMap {
 	public static final int CARGO_CLAW_MOTOR_TOP = 0;
 	public static final int CARGO_CLAW_MOTOR_BOTTOM = 1;
 	public static final boolean CARGO_CLAW_TOP_INVERTED = false;
-	public static final boolean CARGO_CLAW_BOTTOM_INVERTED = true;
+	public static final boolean CARGO_CLAW_BOTTOM_INVERTED = false;
 
-	// HATCH PANEL BEAK
+	// HATCH PANEL BEAK (and wrist)
 	public static final int BEAK_MOTOR = -1;
+	public static final boolean BEAK_MOTOR_INVERTED = false;
+
 	public static final int BEAK_WRIST_MOTOR = -1;
+	public static final boolean BEAK_WRIST_MOTOR_INVERTED = false;
 }
