@@ -22,9 +22,11 @@ public class Elevator extends Subsystem {
 
 	public void init() {
 		leftMotor = new VictorSP(RobotMap.ELEVATOR_LEFT_MOTOR);
-		rightMotor = new VictorSP(RobotMap.ELEVATOR_RIGHT_MOTOR);
 		leftMotor.setInverted(RobotMap.ELEVATOR_LEFT_INVERTED);
+
+		rightMotor = new VictorSP(RobotMap.ELEVATOR_RIGHT_MOTOR);
 		rightMotor.setInverted(RobotMap.ELEVATOR_RIGHT_INVERTED);
+
 		limitSwitchTop = new DigitalInput(RobotMap.ELEVATOR_LIMIT_TOP);
 		limitSwitchBottom = new DigitalInput(RobotMap.ELEVATOR_LIMIT_BOTTOM);
 	}
@@ -53,15 +55,15 @@ public class Elevator extends Subsystem {
 		return !limitSwitchTop.get();
 	}
 
-	public boolean isInMiddle() {
-		return !isAtTop() && !isAtBottom();
-	}
-
 	public boolean isAtBottom() {
 		return !limitSwitchBottom.get();
 	}
 
+	public boolean isInMiddle() {
+		return !isAtTop() && !isAtBottom();
+	}
+
 	public void initDefaultCommand() {
-		// setDefaultCommand(new TeleLift(this));
+		// setDefaultCommand(new TeleElevate(this));
 	}
 }
