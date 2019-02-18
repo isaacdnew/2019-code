@@ -24,7 +24,7 @@ public class TeleElevate extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		elevator.move(-controller.getY(Hand.kLeft));
+		elevator.move(-OI.deadBand(controller.getY(Hand.kLeft)));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
