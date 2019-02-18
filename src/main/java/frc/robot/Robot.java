@@ -29,23 +29,28 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	// Subsystems
 	public final Drivetrain drivetrain = new Drivetrain();
+
 	private final Elevator elevator = new Elevator();
+
+	private final HatchPanelBeak beak = new HatchPanelBeak();
+	private final BeakWrist beakWrist = new BeakWrist();
+
 	private final CargoClaw cargoClaw = new CargoClaw();
+	private final ClawWrist clawWrist = new ClawWrist();
 
 	// Cameras
 	// private CargoCam cargoCam = new CargoCam(0);
 	// private BeakCam beakCam = new BeakCam(1);
+	private final int imgWidth = 160;
+	private final int imgHeight = 120;
 
 	// Compressor
 	private final Compressor compressor = new Compressor();
 
 	// Other stuff
 	public static OI oi;
-
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-	private final int imgWidth = 160;
-	private final int imgHeight = 120;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -55,22 +60,26 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI(this);
 
-		// Init all subsystems
+		// Initialize all subsystems
 		drivetrain.init();
-		elevator.init();
-		cargoClaw.init();
 
-		// Other stuff to do
-		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
-		drivetrain.resetEncoders();
-		compressor.setClosedLoopControl(true);
+		elevator.init();
+
+		cargoClaw.init();
+		clawWrist.init();
+
+		beak.init();
+		beakWrist.init();
 
 		// Init cameras
 		// cargoCam.startProcessing();
 		// beakCam.startProcessing();
-
 		CameraServer.getInstance().startAutomaticCapture("BeakCam", 0).setResolution(imgWidth, imgHeight);
 		CameraServer.getInstance().startAutomaticCapture("CargoCam", 1).setResolution(imgWidth, imgHeight);
+
+		// Other stuff to do
+		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		compressor.setClosedLoopControl(true);
 	}
 
 	/**
