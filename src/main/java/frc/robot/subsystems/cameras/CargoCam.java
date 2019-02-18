@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.cameras;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
