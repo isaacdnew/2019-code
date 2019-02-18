@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	// Subsystems
-	private final Compressor compressor = new Compressor();
 	public final Drivetrain drivetrain = new Drivetrain();
 	private final Elevator elevator = new Elevator();
 	private final CargoClaw cargoClaw = new CargoClaw();
@@ -34,6 +33,9 @@ public class Robot extends TimedRobot {
 	// Cameras
 	private CargoCam cargoCam = new CargoCam(0);
 	private BeakCam beakCam = new BeakCam(1);
+
+	// Compressor
+	private final Compressor compressor = new Compressor();
 
 	// Other stuff
 	public static OI oi;
