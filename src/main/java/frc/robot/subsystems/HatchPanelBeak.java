@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.teleop.TeleBeak;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -28,6 +29,6 @@ public class HatchPanelBeak extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new TeleBeak(this));
+		setDefaultCommand(new TeleBeak(this));
 	}
 }
