@@ -16,10 +16,10 @@ public class CargoClaw extends Subsystem {
 	}
 
 	public void init() {
-		topMotor = new VictorSP(RobotMap.CARGO_CLAW_MOTOR_TOP);
-		bottomMotor = new VictorSP(RobotMap.CARGO_CLAW_MOTOR_BOTTOM);
-		topMotor.setInverted(RobotMap.CARGO_CLAW_TOP_INVERTED);
-		bottomMotor.setInverted(RobotMap.CARGO_CLAW_BOTTOM_INVERTED);
+		topMotor = new VictorSP(RobotMap.CLAW_MOTOR_TOP);
+		bottomMotor = new VictorSP(RobotMap.CLAW_MOTOR_BOTTOM);
+		topMotor.setInverted(RobotMap.CLAW_TOP_INVERTED);
+		bottomMotor.setInverted(RobotMap.CLAW_BOTTOM_INVERTED);
 	}
 
 	public void move(double pwr) {

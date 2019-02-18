@@ -21,8 +21,8 @@ public class Elevator extends Subsystem {
 	}
 
 	public void init() {
-		leftMotor = new VictorSP(RobotMap.ELEVATOR_MOTOR_1);
-		rightMotor = new VictorSP(RobotMap.ELEVATOR_MOTOR_2);
+		leftMotor = new VictorSP(RobotMap.ELEVATOR_LEFT_MOTOR);
+		rightMotor = new VictorSP(RobotMap.ELEVATOR_RIGHT_MOTOR);
 		leftMotor.setInverted(RobotMap.ELEVATOR_LEFT_INVERTED);
 		rightMotor.setInverted(RobotMap.ELEVATOR_RIGHT_INVERTED);
 		limitSwitchTop = new DigitalInput(RobotMap.ELEVATOR_LIMIT_TOP);
