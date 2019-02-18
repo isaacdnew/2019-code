@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.teleop.TeleClaw;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -33,6 +34,6 @@ public class CargoClaw extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new TeleCargo(this));
+		setDefaultCommand(new TeleClaw(this));
 	}
 }
