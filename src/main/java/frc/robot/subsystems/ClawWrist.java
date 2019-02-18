@@ -30,8 +30,8 @@ public class ClawWrist extends Subsystem {
 	}
 
 	public void init() {
-		m = new WPI_TalonSRX(RobotMap.BEAK_WRIST_MOTOR);
-		m.setInverted(RobotMap.BEAK_WRIST_MOTOR_INVERTED);
+		m = new WPI_TalonSRX(RobotMap.CLAW_WRIST_MOTOR);
+		m.setInverted(RobotMap.CLAW_WRIST_MOTOR_INVERTED);
 		m.configSelectedFeedbackSensor(FeedbackDevice.Analog);
 		m.selectProfileSlot(0, 0);
 		m.config_kP(0, P);
@@ -76,7 +76,7 @@ public class ClawWrist extends Subsystem {
 		return m.getSelectedSensorPosition() * revsPerTick * beltRatio * 360.0;
 	}
 
-	public void stop() {
+	public void goLimp() {
 		m.stopMotor();
 	}
 
