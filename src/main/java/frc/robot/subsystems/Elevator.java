@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
-//import frc.robot.commands.teleop.TeleLift;
+import frc.robot.commands.teleop.TeleElevate;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -64,6 +64,6 @@ public class Elevator extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new TeleElevate(this));
+		setDefaultCommand(new TeleElevate(this));
 	}
 }
