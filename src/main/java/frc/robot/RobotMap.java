@@ -41,7 +41,8 @@ public class RobotMap {
 	public static final int ELEVATOR_MOTOR_2 = 10;
 	public static final int ELEVATOR_LIMIT_TOP = 0;
 	public static final int ELEVATOR_LIMIT_BOTTOM = 1;
-	public static final boolean ELEVATOR_INVERTED = true;
+	public static final boolean ELEVATOR_LEFT_INVERTED = true;
+	public static final boolean ELEVATOR_RIGHT_INVERTED = false;
 
 	// CARGO CLAW
 	public static final int CARGO_CLAW_MOTOR_TOP = 0;
