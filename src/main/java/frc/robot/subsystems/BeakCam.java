@@ -16,7 +16,7 @@ public class BeakCam extends Subsystem {
 	UsbCamera beakCam;
 	final int imgWidth = 160;
 	final int imgHeight = 120;
-	final int fps = 20;
+	final int fps = 30;
 	final int brightness = 20;
 	final int exposure = 50;
 	final int whiteBalance = 1000;

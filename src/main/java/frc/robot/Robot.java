@@ -11,6 +11,8 @@ import frc.robot.commands.ResetDrivetrainEncoders;
 import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,8 +33,8 @@ public class Robot extends TimedRobot {
 	private final CargoClaw cargoClaw = new CargoClaw();
 
 	// Cameras
-	private CargoCam cargoCam = new CargoCam(0);
-	private BeakCam beakCam = new BeakCam(1);
+	// private CargoCam cargoCam = new CargoCam(0);
+	// private BeakCam beakCam = new BeakCam(1);
 
 	// Compressor
 	private final Compressor compressor = new Compressor();
@@ -42,6 +44,8 @@ public class Robot extends TimedRobot {
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	private final int imgWidth = 160;
+	private final int imgHeight = 120;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -58,9 +62,15 @@ public class Robot extends TimedRobot {
 
 		// Other stuff to do
 		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		drivetrain.resetEncoders();
 		compressor.setClosedLoopControl(true);
-		cargoCam.startProcessing();
-		beakCam.startProcessing();
+
+		// Init cameras
+		// cargoCam.startProcessing();
+		// beakCam.startProcessing();
+
+		CameraServer.getInstance().startAutomaticCapture("BeakCam", 0).setResolution(imgWidth, imgHeight);
+		CameraServer.getInstance().startAutomaticCapture("CargoCam", 1).setResolution(imgWidth, imgHeight);
 	}
 
 	/**
