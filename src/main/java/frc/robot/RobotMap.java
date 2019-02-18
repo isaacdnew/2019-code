@@ -15,15 +15,7 @@ package frc.robot;
  */
 public class RobotMap {
 
-	/*
-	 * --- DRIVETRAIN LAYOUT ---
-	 *
-	 * Front Wheel 2 ------------ Wheel 1 --- | | | | | | | | | Left | | Right |--
-	 * Length | | | | | | | | | Wheel 3 ------------ Wheel 4 --- Back
-	 *
-	 * | | |----- Width -----|
-	 */
-
+	// DRIVETRAIN
 	public static final int DRIVETRAIN_DRIVE_1 = 3;
 	public static final int DRIVETRAIN_DRIVE_2 = 2;
 	public static final int DRIVETRAIN_DRIVE_3 = 6;
@@ -44,18 +36,20 @@ public class RobotMap {
 	public static final boolean DRIVETRAIN_STEER_3_INV = false;
 	public static final boolean DRIVETRAIN_STEER_4_INV = false;
 
-	// LIFTER
-	public static final int LIFTER_MOTOR_1 = 9;
-	public static final int LIFTER_MOTOR_2 = 10;
-	public static final int LIFTER_LIMIT_TOP = 0;
-	public static final int LIFTER_LIMIT_BOTTOM = 1;
-	public static final boolean LIFTER_INVERTED = true;
+	// ELEVATOR
+	public static final int ELEVATOR_MOTOR_1 = 9;
+	public static final int ELEVATOR_MOTOR_2 = 10;
+	public static final int ELEVATOR_LIMIT_TOP = 0;
+	public static final int ELEVATOR_LIMIT_BOTTOM = 1;
+	public static final boolean ELEVATOR_INVERTED = true;
 
-	// INTAKE
-	public static final int INTAKE_MOTOR_1 = 0;
-	public static final int INTAKE_MOTOR_2 = 1;
-	public static final boolean INTAKE_1_INVERTED = false;
-	public static final boolean INTAKE_2_INVERTED = true;
-	public static final int clawSol0 = 0;
-	public static final int clawSol1 = 1;
+	// CARGO CLAW
+	public static final int CARGO_CLAW_MOTOR_TOP = 0;
+	public static final int CARGO_CLAW_MOTOR_BOTTOM = 1;
+	public static final boolean CARGO_CLAW_TOP_INVERTED = false;
+	public static final boolean CARGO_CLAW_BOTTOM_INVERTED = true;
+
+	// HATCH PANEL BEAK
+	public static final int BEAK_MOTOR = -1;
+	public static final int BEAK_WRIST_MOTOR = -1;
 }
