@@ -1,6 +1,6 @@
-package frc6300.robot.commands;
+package frc.robot.commands;
 
-import frc6300.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Drivetrain;
 import org.usfirst.frc4048.swerve.math.CentricMode;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;

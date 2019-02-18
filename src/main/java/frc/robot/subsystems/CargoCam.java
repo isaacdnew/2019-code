@@ -1,8 +1,8 @@
-package frc6300.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import frc6300.robot.BeakCamPipeline;
+import frc.robot.HumanCamPipeline;
 
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
@@ -12,8 +12,8 @@ import edu.wpi.first.vision.VisionThread;
 /**
  * The camera that looks at the cube from the claw (for human use only)
  */
-public class BeakCam extends Subsystem {
-	UsbCamera beakCam;
+public class CargoCam extends Subsystem {
+	UsbCamera cargoCam;
 	final int imgWidth = 160;
 	final int imgHeight = 120;
 	final int fps = 20;
@@ -22,28 +22,24 @@ public class BeakCam extends Subsystem {
 	final int whiteBalance = 1000;
 
 	VisionThread visionThread;
-	final Object turnAngleSync = new Object();
-	double centerX = 0.0;
-	double lastTurnAngle = 0.0;
-	double turnAngle = 0.0;
 
-	public BeakCam(int port) {
-		beakCam = new UsbCamera("ClawCam", port);
+	public CargoCam(int port) {
+		cargoCam = new UsbCamera("ClawCam", port);
 	}
 
 	public void startRecording() {
-		beakCam.setResolution(imgWidth, imgHeight);
-		beakCam.setFPS(fps);
-		beakCam.setBrightness(brightness);
-		beakCam.setExposureAuto();
-		beakCam.setWhiteBalanceManual(whiteBalance);
-		CameraServer.getInstance().startAutomaticCapture(beakCam);
+		cargoCam.setResolution(imgWidth, imgHeight);
+		cargoCam.setFPS(fps);
+		cargoCam.setBrightness(brightness);
+		cargoCam.setExposureAuto();
+		cargoCam.setWhiteBalanceManual(whiteBalance);
+		CameraServer.getInstance().startAutomaticCapture(cargoCam);
 	}
 
 	public void startProcessing() {
 		startRecording();
 		CvSource outputStream = CameraServer.getInstance().putVideo("BeakCam", imgWidth, imgHeight);
-		visionThread = new VisionThread(beakCam, new BeakCamPipeline(), pipeline -> {
+		visionThread = new VisionThread(cargoCam, new HumanCamPipeline(), pipeline -> {
 			outputStream.putFrame(pipeline.blurOutput());
 		});
 		visionThread.start();

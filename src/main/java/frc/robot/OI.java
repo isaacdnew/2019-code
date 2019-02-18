@@ -5,11 +5,11 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc6300.robot;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc6300.robot.commands.ToggleCentricMode;
+import frc.robot.commands.ToggleCentricMode;
 
 /**
  * This class is the glue that binds the controls on the physical operator

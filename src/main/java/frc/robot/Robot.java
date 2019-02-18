@@ -5,11 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc6300.robot;
+package frc.robot;
 
-import frc6300.robot.commands.ResetDrivetrainEncoders;
-import frc6300.robot.subsystems.Drivetrain;
-import frc6300.robot.subsystems.*;
+import frc.robot.commands.ResetDrivetrainEncoders;
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Compressor;
@@ -26,12 +25,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
-	private Compressor compressor = new Compressor();
-	private Elevator elevator = new Elevator();
-
-	public static OI oi;
-
+	// Subsystems
+	private final Compressor compressor = new Compressor();
 	public final Drivetrain drivetrain = new Drivetrain();
+	private final Elevator elevator = new Elevator();
+
+	// Cameras
+	private CargoCam cargoCam = new CargoCam(0);
+	private BeakCam beakCam = new BeakCam(1);
+
+	// Other stuff
+	public static OI oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -48,6 +52,8 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Autonomous Command to Run:", m_chooser);
 		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		cargoCam.startProcessing();
+		beakCam.startProcessing();
 	}
 
 	/**

@@ -1,7 +1,7 @@
-package frc6300.robot.commands.teleop;
+package frc.robot.commands.teleop;
 
-import frc6300.robot.OI;
-import frc6300.robot.subsystems.Drivetrain;
+import frc.robot.OI;
+import frc.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;

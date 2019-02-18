@@ -1,4 +1,4 @@
-package frc6300.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 import org.usfirst.frc4048.swerve.drive.SwerveDrive;
 import org.usfirst.frc4048.swerve.math.CentricMode;
-import frc6300.robot.RobotMap;
-import frc6300.robot.commands.teleop.TeleDrive;
+import frc.robot.RobotMap;
+import frc.robot.commands.teleop.TeleDrive;
 import org.usfirst.frc4048.swerve.drive.CanTalonSwerveEnclosure;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;

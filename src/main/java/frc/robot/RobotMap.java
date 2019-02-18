@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc6300.robot;
+package frc.robot;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -14,54 +14,48 @@ package frc6300.robot;
  * floating around.
  */
 public class RobotMap {
-	
-	/*       --- DRIVETRAIN LAYOUT ---
+
+	/*
+	 * --- DRIVETRAIN LAYOUT ---
 	 *
-	 *                 Front
-	 *      Wheel 2 ------------ Wheel 1    ---
-	 *          |                 |           |
-	 *          |                 |           |
-	 *          |                 |           |
-	 *    Left  |                 |  Right    |-- Length
-	 *          |                 |           |
-	 *          |                 |           |
-	 *          |                 |           |
-	 *      Wheel 3 ------------ Wheel 4    ---
-	 *                 Back
+	 * Front Wheel 2 ------------ Wheel 1 --- | | | | | | | | | Left | | Right |--
+	 * Length | | | | | | | | | Wheel 3 ------------ Wheel 4 --- Back
 	 *
-	 *          |                 |
-	 *          |----- Width -----|
+	 * | | |----- Width -----|
 	 */
-	
+
 	public static final int DRIVETRAIN_DRIVE_1 = 3;
 	public static final int DRIVETRAIN_DRIVE_2 = 2;
 	public static final int DRIVETRAIN_DRIVE_3 = 6;
 	public static final int DRIVETRAIN_DRIVE_4 = 7;
-	
+
 	public static final boolean DRIVETRAIN_DRIVE_1_INV = true;
 	public static final boolean DRIVETRAIN_DRIVE_2_INV = false;
 	public static final boolean DRIVETRAIN_DRIVE_3_INV = false;
 	public static final boolean DRIVETRAIN_DRIVE_4_INV = true;
-	
+
 	public static final int DRIVETRAIN_STEER_1 = 4;
 	public static final int DRIVETRAIN_STEER_2 = 1;
 	public static final int DRIVETRAIN_STEER_3 = 5;
 	public static final int DRIVETRAIN_STEER_4 = 8;
-	
+
 	public static final boolean DRIVETRAIN_STEER_1_INV = false;
 	public static final boolean DRIVETRAIN_STEER_2_INV = false;
 	public static final boolean DRIVETRAIN_STEER_3_INV = false;
 	public static final boolean DRIVETRAIN_STEER_4_INV = false;
-	
+
 	// LIFTER
 	public static final int LIFTER_MOTOR_1 = 9;
 	public static final int LIFTER_MOTOR_2 = 10;
-	public static final boolean LIFTER_INVERTED = false;
-	public static final int Liftpot = 7;
+	public static final int LIFTER_LIMIT_TOP = 0;
+	public static final int LIFTER_LIMIT_BOTTOM = 1;
+	public static final boolean LIFTER_INVERTED = true;
 
-	// Solenoid Ports 
-	public static final int lClawSolPort1 = 6; 
-	public static final int lClawSolPort2 = 5;
-	public static final int rClawSolPort1 = 7;
-	public static final int rClawSolPort2 = 6; 
+	// INTAKE
+	public static final int INTAKE_MOTOR_1 = 0;
+	public static final int INTAKE_MOTOR_2 = 1;
+	public static final boolean INTAKE_1_INVERTED = false;
+	public static final boolean INTAKE_2_INVERTED = true;
+	public static final int clawSol0 = 0;
+	public static final int clawSol1 = 1;
 }
