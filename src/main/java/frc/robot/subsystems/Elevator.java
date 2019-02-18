@@ -11,39 +11,42 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Elevator extends Subsystem {
-	private VictorSP m1;
-	private VictorSP m2;
+	private VictorSP leftMotor;
+	private VictorSP rightMotor;
 	private DigitalInput limitSwitchTop;
 	private DigitalInput limitSwitchBottom;
-	private double neutralPwr = 0.1;
+	private final double neutralPwr = 0.1;
 
 	public Elevator() {
-		m1 = new VictorSP(RobotMap.LIFTER_MOTOR_1);
-		m2 = new VictorSP(RobotMap.LIFTER_MOTOR_2);
-		m1.setInverted(RobotMap.LIFTER_INVERTED);
-		m2.setInverted(RobotMap.LIFTER_INVERTED);
-		limitSwitchTop = new DigitalInput(RobotMap.LIFTER_LIMIT_TOP);
-		limitSwitchBottom = new DigitalInput(RobotMap.LIFTER_LIMIT_BOTTOM);
+	}
+
+	public void init() {
+		leftMotor = new VictorSP(RobotMap.ELEVATOR_MOTOR_1);
+		rightMotor = new VictorSP(RobotMap.ELEVATOR_MOTOR_2);
+		leftMotor.setInverted(!RobotMap.ELEVATOR_INVERTED);
+		rightMotor.setInverted(RobotMap.ELEVATOR_INVERTED);
+		limitSwitchTop = new DigitalInput(RobotMap.ELEVATOR_LIMIT_TOP);
+		limitSwitchBottom = new DigitalInput(RobotMap.ELEVATOR_LIMIT_BOTTOM);
 	}
 
 	public void move(double pwr) {
 		if (isAtTop() && pwr > 0) {
-			m1.set(neutralPwr);
-			m2.set(neutralPwr);
+			leftMotor.set(neutralPwr);
+			rightMotor.set(neutralPwr);
 			System.out.println("Elevator at top; not going up.");
 		} else if (isAtBottom() && pwr < 0) {
-			m1.set(neutralPwr);
-			m2.set(neutralPwr);
+			leftMotor.set(neutralPwr);
+			rightMotor.set(neutralPwr);
 			System.out.println("Elevator at bottom; not going down.");
 		} else {
-			m1.set(pwr + neutralPwr);
-			m2.set(pwr + neutralPwr);
+			leftMotor.set(pwr + neutralPwr);
+			rightMotor.set(pwr + neutralPwr);
 		}
 	}
 
 	public void goLimp() {
-		m1.stopMotor();
-		m2.stopMotor();
+		leftMotor.stopMotor();
+		rightMotor.stopMotor();
 	}
 
 	public boolean isAtTop() {
