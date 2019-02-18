@@ -33,6 +33,6 @@ public class CargoClaw extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new TeleLift(this));
+		// setDefaultCommand(new TeleCargo(this));
 	}
 }
