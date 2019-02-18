@@ -40,7 +40,7 @@ public class CargoCam extends Subsystem {
 		startRecording();
 		CvSource outputStream = CameraServer.getInstance().putVideo("BeakCam", imgWidth, imgHeight);
 		visionThread = new VisionThread(cargoCam, new HumanCamPipeline(), pipeline -> {
-			outputStream.putFrame(pipeline.blurOutput());
+			outputStream.putFrame(pipeline.resizeImageOutput());
 		});
 		visionThread.start();
 	}
