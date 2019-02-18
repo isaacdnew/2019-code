@@ -35,11 +35,11 @@ public class Elevator extends Subsystem {
 		if (isAtTop() && pwr > 0) {
 			leftMotor.set(neutralPwr);
 			rightMotor.set(neutralPwr);
-			System.out.println("Elevator at top; not going up.");
-		} else if (isAtBottom() && pwr < 0) {
-			leftMotor.set(neutralPwr);
-			rightMotor.set(neutralPwr);
-			System.out.println("Elevator at bottom; not going down.");
+			System.out.println("Elevator at top; holding.");
+		} else if (isAtBottom() && pwr <= 0) {
+			leftMotor.set(0);
+			rightMotor.set(0);
+			System.out.println("Elevator at bottom; resting.");
 		} else {
 			leftMotor.set(pwr + neutralPwr);
 			rightMotor.set(pwr + neutralPwr);
