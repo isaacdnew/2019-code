@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.ChoosePosition;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -94,6 +95,6 @@ public class ClawWrist extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		// setDefaultCommand(new ChoosePosition(this));
+		setDefaultCommand(new ChoosePosition(this));
 	}
 }
