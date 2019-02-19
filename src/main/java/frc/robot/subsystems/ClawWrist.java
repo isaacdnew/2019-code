@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ClawWrist extends Subsystem {
 	private WPI_TalonSRX m;
 
-	private final double P = 0.0;
+	private final double P = 4.0;
 	private final double I = 0.0;
 	private final double D = 0.0;
 	private final double F = 0.0;
@@ -38,6 +38,8 @@ public class ClawWrist extends Subsystem {
 		m.config_kI(0, I);
 		m.config_kD(0, D);
 		m.config_kF(0, F);
+		m.configMaxIntegralAccumulator(0, 8);
+		m.setSelectedSensorPosition(0);
 	}
 
 	public void setPosition(ClawWristPosition position) {
