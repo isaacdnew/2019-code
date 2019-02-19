@@ -35,9 +35,10 @@ public class OI {
 
 	public OI(Robot robot) {
 		driveX.whenPressed(new ToggleCentricMode(robot.drivetrain));
+		driveLTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.LEFT));
+		driveRTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.RIGHT));
 
-		liftLTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.LEFT));
-		liftRTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.RIGHT));
+		liftA.whenPressed(new StowEverything(robot.clawWrist, robot.beakWrist));
 	}
 
 	/**
