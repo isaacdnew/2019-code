@@ -23,7 +23,8 @@ public class ChoosePosition extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (clawWrist.getPosition() == ClawWristPosition.LEVEL && SmartDashboard.getBoolean("Elevator at top", false)) {
+		if (clawWrist.getPosition() == ClawWristPosition.LEVEL
+				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
 			clawWrist.setPosition(ClawWristPosition.DOWN);
 			System.out.println("going down");
 		} else if (clawWrist.getPosition() == ClawWristPosition.DOWN
@@ -31,7 +32,7 @@ public class ChoosePosition extends Command {
 			clawWrist.setPosition(ClawWristPosition.LEVEL);
 			System.out.println("going level");
 		} else {
-			System.out.println("not changing anything");
+			System.out.println("not changing anything: " + SmartDashboard.getBoolean("Elevator at bottom", false));
 		}
 	}
 
