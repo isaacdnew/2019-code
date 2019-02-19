@@ -148,7 +148,8 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void drive(double fwd, double strafe, double rotateCW) {
-		swerveDrive.move(fwd, strafe, rotateCW, gyro.getAngle());
+		swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+		System.out.println(getHeading());
 	}
 
 	public double[] getWheelAngles() {
