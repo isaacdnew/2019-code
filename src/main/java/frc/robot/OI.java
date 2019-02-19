@@ -39,6 +39,7 @@ public class OI {
 		driveRTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.RIGHT));
 
 		liftA.whenPressed(new StowEverything(robot.clawWrist, robot.beakWrist));
+		liftB.whenPressed(new ReadyEverything(robot.clawWrist, robot.beakWrist));
 	}
 
 	/**
