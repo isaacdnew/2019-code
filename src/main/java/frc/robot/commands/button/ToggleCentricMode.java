@@ -52,5 +52,7 @@ public class ToggleCentricMode extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		OI.driveController.setRumble(RumbleType.kLeftRumble, 0.0);
+		OI.driveController.setRumble(RumbleType.kRightRumble, 0.0);
 	}
 }

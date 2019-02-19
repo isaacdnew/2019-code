@@ -30,7 +30,7 @@ public class StowEverything extends Command {
 		startTime = Timer.getFPGATimestamp();
 		clawWrist.setPosition(ClawWristPosition.STOWED);
 		beakWrist.move(-0.3);
-		OI.liftController.setRumble(RumbleType.kLeftRumble, 1.0);
+		OI.liftController.setRumble(RumbleType.kRightRumble, 1.0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -44,12 +44,14 @@ public class StowEverything extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		OI.liftController.setRumble(RumbleType.kLeftRumble, 0.0);
+		OI.liftController.setRumble(RumbleType.kRightRumble, 0.0);
 		beakWrist.stop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		OI.liftController.setRumble(RumbleType.kRightRumble, 0.0);
+		beakWrist.stop();
 	}
 }
