@@ -65,6 +65,7 @@ public class Drivetrain extends Subsystem {
 
 	private Gyro gyro = new ADXRS450_Gyro();
 	private CentricMode centricMode = CentricMode.ROBOT;
+	private boolean beakIsFront = false;
 
 	public Drivetrain() {
 
@@ -148,7 +149,11 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void drive(double fwd, double strafe, double rotateCW) {
-		swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+		if (beakIsFront) {
+			swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+		} else {
+			swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
+		}
 		System.out.println(getHeading());
 	}
 
@@ -185,6 +190,18 @@ public class Drivetrain extends Subsystem {
 	public void setCentricMode(CentricMode mode) {
 		swerveDrive.setCentricMode(mode);
 		centricMode = mode;
+	}
+
+	public void setBeakAsFront() {
+		beakIsFront = true;
+	}
+
+	public void setClawAsFront() {
+		beakIsFront = false;
+	}
+
+	public boolean beakIsFront() {
+		return beakIsFront;
 	}
 
 	public CentricMode getCentricMode() {

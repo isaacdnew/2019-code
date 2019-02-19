@@ -34,6 +34,7 @@ public class OI {
 	public static final JoystickButton liftRTrigger = new JoystickButton(liftController, 6);
 
 	public OI(Robot robot) {
+		driveA.whenPressed(new ToggleFrontDirection(robot.drivetrain));
 		driveX.whenPressed(new ToggleCentricMode(robot.drivetrain));
 		driveLTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.LEFT));
 		driveRTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.RIGHT));
