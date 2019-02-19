@@ -55,11 +55,11 @@ public class RobotMap {
 	public static final boolean CLAW_WRIST_MOTOR_INVERTED = false;
 
 	// BEAK
-	public static final int BEAK_MOTOR = 9; // Talon SRX
+	public static final int BEAK_MOTOR = 9; // Victor SP
 	public static final boolean BEAK_MOTOR_INVERTED = true;
 
-	// HATCH PANEL WRIST
-	public static final int BEAK_WRIST_MOTOR = 9; // Victor SP
+	// BEAK WRIST
+	public static final int BEAK_WRIST_MOTOR = 9; // Talon SRX
 	public static final boolean BEAK_WRIST_MOTOR_INVERTED = false;
 
 	// RAMPS
