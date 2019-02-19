@@ -32,7 +32,7 @@ public class ChoosePosition extends Command {
 			clawWrist.setPosition(ClawWristPosition.LEVEL);
 			System.out.println("going level");
 		} else {
-			System.out.println("not changing anything: " + SmartDashboard.getBoolean("Elevator at bottom", false));
+			System.out.println("not changing anything: " + clawWrist.getPosition());
 		}
 	}
 
