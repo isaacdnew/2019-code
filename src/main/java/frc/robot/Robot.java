@@ -118,5 +118,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putString("Centric Mode", drivetrain.getCentricMode().toString() + "-CENTRIC");
+		SmartDashboard.putBoolean("Elevator at top", elevator.isAtTop());
+		SmartDashboard.putBoolean("Elevator at bottom", elevator.isAtBottom());
 	}
 }
