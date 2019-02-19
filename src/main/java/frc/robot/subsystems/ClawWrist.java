@@ -26,6 +26,8 @@ public class ClawWrist extends Subsystem {
 		STOWED, LEVEL, DOWN
 	}
 
+	private ClawWristPosition position;
+
 	public ClawWrist() {
 	}
 
@@ -47,12 +49,15 @@ public class ClawWrist extends Subsystem {
 		switch (position) {
 		case STOWED:
 			setPosition(0);
+			position = ClawWristPosition.STOWED;
 			break;
 		case LEVEL:
 			setPosition(60);
+			position = ClawWristPosition.LEVEL;
 			break;
 		case DOWN:
 			setPosition(90);
+			position = ClawWristPosition.DOWN;
 			break;
 		}
 	}
@@ -65,6 +70,11 @@ public class ClawWrist extends Subsystem {
 
 		// set motor setpoint
 		m.set(ControlMode.Position, ticks);
+		position = null;
+	}
+
+	public ClawWristPosition getPosition() {
+		return position;
 	}
 
 	public double getPositionTicks() {
@@ -84,5 +94,6 @@ public class ClawWrist extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		// setDefaultCommand(new ChoosePosition(this));
 	}
 }
