@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.button;
 
 import frc.robot.subsystems.Drivetrain;
 import org.usfirst.frc4048.swerve.math.CentricMode;
