@@ -1,7 +1,7 @@
 package frc.robot.commands.teleop;
 
 import frc.robot.OI;
-import frc.robot.subsystems.HatchPanelBeak;
+import frc.robot.subsystems.Beak;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class TeleBeak extends Command {
-	private HatchPanelBeak beak;
+	private Beak beak;
 	private XboxController controller = OI.liftController;
 
-	public TeleBeak(HatchPanelBeak beak) {
+	public TeleBeak(Beak beak) {
 		this.beak = beak;
 		requires(beak);
 	}

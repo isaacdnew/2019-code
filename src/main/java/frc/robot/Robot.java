@@ -27,9 +27,9 @@ public class Robot extends TimedRobot {
 	// Subsystems
 	public final Drivetrain drivetrain = new Drivetrain();
 	private final Elevator elevator = new Elevator();
-	private final HatchPanelBeak beak = new HatchPanelBeak();
+	private final Beak beak = new Beak();
 	private final BeakWrist beakWrist = new BeakWrist();
-	private final CargoClaw cargoClaw = new CargoClaw();
+	private final Claw cargoClaw = new Claw();
 	private final ClawWrist clawWrist = new ClawWrist();
 	private final RampLatches rampLatches = new RampLatches();
 

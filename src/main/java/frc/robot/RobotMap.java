@@ -44,19 +44,19 @@ public class RobotMap {
 	public static final boolean ELEVATOR_LEFT_INVERTED = true;
 	public static final boolean ELEVATOR_RIGHT_INVERTED = false;
 
-	// CARGO CLAW
+	// CLAW
 	public static final int CLAW_MOTOR_TOP = 3; // Victor SP
 	public static final int CLAW_MOTOR_BOTTOM = 2; // Victor SP
-	public static final boolean CLAW_TOP_INVERTED = false;
+	public static final boolean CLAW_TOP_INVERTED = true;
 	public static final boolean CLAW_BOTTOM_INVERTED = false;
 
-	// CARGO WRIST
+	// CLAW WRIST
 	public static final int CLAW_WRIST_MOTOR = 10; // Talon SRX
 	public static final boolean CLAW_WRIST_MOTOR_INVERTED = false;
 
-	// HATCH PANEL BEAK
+	// BEAK
 	public static final int BEAK_MOTOR = 9; // Talon SRX
-	public static final boolean BEAK_MOTOR_INVERTED = false;
+	public static final boolean BEAK_MOTOR_INVERTED = true;
 
 	// HATCH PANEL WRIST
 	public static final int BEAK_WRIST_MOTOR = 9; // Victor SP

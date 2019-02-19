@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class CargoClaw extends Subsystem {
+public class Claw extends Subsystem {
 	private VictorSP topMotor;
 	private VictorSP bottomMotor;
 
-	public CargoClaw() {
+	public Claw() {
 	}
 
 	public void init() {
