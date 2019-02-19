@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import frc.robot.subsystems.ClawWrist;
 import frc.robot.subsystems.ClawWrist.ClawWristPosition;
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,7 +13,7 @@ public class ChoosePosition extends Command {
 
 	private ClawWrist clawWrist;
 
-	public ChoosePosition(ClawWrist clawWrist) {
+	public ChoosePosition(ClawWrist clawWrist, Robot robot) {
 		this.clawWrist = clawWrist;
 		requires(clawWrist);
 	}
@@ -23,11 +24,10 @@ public class ChoosePosition extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (clawWrist.getPosition() == ClawWristPosition.LEVEL && SmartDashboard.getBoolean("Elevator at top", false)) {
+		if (clawWrist.getPosition() == ClawWristPosition.LEVEL) {
 			clawWrist.setPosition(ClawWristPosition.DOWN);
 		}
-		if (clawWrist.getPosition() == ClawWristPosition.DOWN
-				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
+		if (clawWrist.getPosition() == ClawWristPosition.DOWN) {
 			clawWrist.setPosition(ClawWristPosition.LEVEL);
 		}
 	}
