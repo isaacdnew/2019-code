@@ -144,7 +144,7 @@ public class Drivetrain extends Subsystem {
 		swerveDrive = new SwerveDrive(swerveEnclosure1, swerveEnclosure2, swerveEnclosure3, swerveEnclosure4, W, L);
 		swerveDrive.setCentricMode(centricMode);
 		resetEncoders();
-		gyro.calibrate();
+		calibrateGyro();
 	}
 
 	public void drive(double fwd, double strafe, double rotateCW) {
