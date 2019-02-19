@@ -47,18 +47,16 @@ public class ClawWrist extends Subsystem {
 	}
 
 	public void setPosition(ClawWristPosition position) {
+		this.position = position;
 		switch (position) {
 		case STOWED:
 			setPosition(0);
-			position = ClawWristPosition.STOWED;
 			break;
 		case LEVEL:
 			setPosition(60);
-			position = ClawWristPosition.LEVEL;
 			break;
 		case DOWN:
 			setPosition(90);
-			position = ClawWristPosition.DOWN;
 			break;
 		}
 	}
