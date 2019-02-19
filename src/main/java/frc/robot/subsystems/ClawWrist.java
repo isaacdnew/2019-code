@@ -63,7 +63,7 @@ public class ClawWrist extends Subsystem {
 		}
 	}
 
-	public void setPosition(double degreesFromStowed) {
+	private void setPosition(double degreesFromStowed) {
 		// convert angle into encoder ticks
 		double pulleyAngle = degreesFromStowed / beltRatio;
 		double pulleyRevs = pulleyAngle / 360.0;
@@ -71,7 +71,6 @@ public class ClawWrist extends Subsystem {
 
 		// set motor setpoint
 		m.set(ControlMode.Position, ticks);
-		position = null;
 	}
 
 	public ClawWristPosition getPosition() {
