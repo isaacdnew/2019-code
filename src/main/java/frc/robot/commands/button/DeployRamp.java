@@ -22,9 +22,9 @@ public class DeployRamp extends Command {
 
 	private Side side;
 
-	public DeployRamp(RampLatches rampLatches, Side hand) {
+	public DeployRamp(RampLatches rampLatches, Side side) {
 		this.rampLatches = rampLatches;
-		this.side = hand;
+		this.side = side;
 		requires(rampLatches);
 	}
 
