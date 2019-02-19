@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
 	private final BeakWrist beakWrist = new BeakWrist();
 	private final CargoClaw cargoClaw = new CargoClaw();
 	private final ClawWrist clawWrist = new ClawWrist();
+	private final RampLatches rampLatches = new RampLatches();
 
 	// Cameras
 	private final int imgWidth = 160;
@@ -55,6 +56,7 @@ public class Robot extends TimedRobot {
 		clawWrist.init();
 		beak.init();
 		beakWrist.init();
+		rampLatches.init();
 
 		// Cameras
 		CameraServer.getInstance().startAutomaticCapture("BeakCam", 0).setResolution(imgWidth, imgHeight);

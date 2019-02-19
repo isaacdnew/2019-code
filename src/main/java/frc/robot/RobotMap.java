@@ -61,4 +61,8 @@ public class RobotMap {
 	// HATCH PANEL WRIST
 	public static final int BEAK_WRIST_MOTOR = 9; // Victor SP
 	public static final boolean BEAK_WRIST_MOTOR_INVERTED = false;
+
+	// RAMPS
+	public static final int[] L_SOL_PORTS = { 6, 7 };
+	public static final int[] R_SOL_PORTS = { 1, 0 };
 }
