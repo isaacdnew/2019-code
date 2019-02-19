@@ -25,10 +25,13 @@ public class ChoosePosition extends Command {
 	protected void execute() {
 		if (clawWrist.getPosition() == ClawWristPosition.LEVEL && SmartDashboard.getBoolean("Elevator at top", false)) {
 			clawWrist.setPosition(ClawWristPosition.DOWN);
-		}
-		if (clawWrist.getPosition() == ClawWristPosition.DOWN
+			System.out.println("going down");
+		} else if (clawWrist.getPosition() == ClawWristPosition.DOWN
 				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
 			clawWrist.setPosition(ClawWristPosition.LEVEL);
+			System.out.println("going level");
+		} else {
+			System.out.println("not changing anything");
 		}
 	}
 
