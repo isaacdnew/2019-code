@@ -17,7 +17,7 @@ public class RampLatches extends Subsystem {
 
 	public void init() {
 		lSol = new DoubleSolenoid(RobotMap.L_SOL_PORTS[0], RobotMap.L_SOL_PORTS[1]);
-		rSol = new DoubleSolenoid(RobotMap.L_SOL_PORTS[0], RobotMap.L_SOL_PORTS[1]);
+		rSol = new DoubleSolenoid(RobotMap.R_SOL_PORTS[0], RobotMap.R_SOL_PORTS[1]);
 	}
 
 	public void closeLeftRamp() {
