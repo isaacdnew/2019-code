@@ -30,6 +30,7 @@ public class StowEverything extends Command {
 		startTime = Timer.getFPGATimestamp();
 		clawWrist.setPosition(ClawWristPosition.STOWED);
 		beakWrist.move(-1);
+		OI.liftController.setRumble(RumbleType.kLeftRumble, 1.0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
