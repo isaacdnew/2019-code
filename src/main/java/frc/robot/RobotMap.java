@@ -63,6 +63,6 @@ public class RobotMap {
 	public static final boolean BEAK_WRIST_MOTOR_INVERTED = false;
 
 	// RAMPS
-	public static final int[] L_SOL_PORTS = { 6, 7 };
+	public static final int[] L_SOL_PORTS = { 7, 6 };
 	public static final int[] R_SOL_PORTS = { 1, 0 };
 }
