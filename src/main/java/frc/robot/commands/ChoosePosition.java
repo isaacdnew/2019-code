@@ -27,7 +27,7 @@ public class ChoosePosition extends Command {
 				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
 			clawWrist.setPosition(ClawWristPosition.DOWN);
 		} else if (clawWrist.getPosition() == ClawWristPosition.DOWN
-				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
+				&& !SmartDashboard.getBoolean("Elevator at bottom", false)) {
 			clawWrist.setPosition(ClawWristPosition.LEVEL);
 		} else {
 		}
