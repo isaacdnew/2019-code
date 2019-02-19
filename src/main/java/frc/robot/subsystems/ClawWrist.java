@@ -56,7 +56,7 @@ public class ClawWrist extends Subsystem {
 			setPosition(60);
 			break;
 		case DOWN:
-			setPosition(90);
+			setPosition(87);
 			break;
 		}
 	}
