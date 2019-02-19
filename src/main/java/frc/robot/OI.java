@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.button.*;
+import frc.robot.commands.button.DeployRamp.Side;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,11 +18,26 @@ import frc.robot.commands.button.*;
  */
 public class OI {
 	public static final XboxController driveController = new XboxController(0);
-	public static final XboxController liftController = new XboxController(1);
+	public static final JoystickButton driveA = new JoystickButton(driveController, 1);
+	public static final JoystickButton driveB = new JoystickButton(driveController, 2);
 	public static final JoystickButton driveX = new JoystickButton(driveController, 3);
+	public static final JoystickButton driveY = new JoystickButton(driveController, 4);
+	public static final JoystickButton driveLTrigger = new JoystickButton(driveController, 5);
+	public static final JoystickButton driveRTrigger = new JoystickButton(driveController, 6);
+
+	public static final XboxController liftController = new XboxController(1);
+	public static final JoystickButton liftA = new JoystickButton(liftController, 1);
+	public static final JoystickButton liftB = new JoystickButton(liftController, 2);
+	public static final JoystickButton liftX = new JoystickButton(liftController, 3);
+	public static final JoystickButton liftY = new JoystickButton(liftController, 4);
+	public static final JoystickButton liftLTrigger = new JoystickButton(liftController, 5);
+	public static final JoystickButton liftRTrigger = new JoystickButton(liftController, 6);
 
 	public OI(Robot robot) {
-		driveX.whenPressed(new ToggleCentricMode(robot.drivetrain, driveController));
+		driveX.whenPressed(new ToggleCentricMode(robot.drivetrain));
+
+		liftLTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.LEFT));
+		liftRTrigger.whenPressed(new DeployRamp(robot.rampLatches, Side.RIGHT));
 	}
 
 	/**
