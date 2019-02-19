@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
 	public final Beak beak = new Beak();
 	public final BeakWrist beakWrist = new BeakWrist();
 	public final Claw cargoClaw = new Claw();
-	public final ClawWrist clawWrist = new ClawWrist(this);
+	public final ClawWrist clawWrist = new ClawWrist();
 	public final RampLatches rampLatches = new RampLatches();
 
 	// Cameras
@@ -120,13 +120,5 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putString("Centric Mode", drivetrain.getCentricMode().toString() + "-CENTRIC");
 		SmartDashboard.putBoolean("Elevator at top", elevator.isAtTop());
 		SmartDashboard.putBoolean("Elevator at bottom", elevator.isAtBottom());
-	}
-
-	public boolean elevatorIsAtTop() {
-		return elevator.isAtTop();
-	}
-
-	public boolean elevatorIsAtBottom() {
-		return elevator.isAtBottom();
 	}
 }

@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.ChoosePosition;
 
@@ -24,16 +23,13 @@ public class ClawWrist extends Subsystem {
 	private final double revsPerTick = 1.0 / 1024.0;
 	private final double beltRatio = 15.0 / 24.0;
 
-	private Robot robot;
-
 	public enum ClawWristPosition {
 		STOWED, LEVEL, DOWN
 	}
 
 	private ClawWristPosition position;
 
-	public ClawWrist(Robot robot) {
-		this.robot = robot;
+	public ClawWrist() {
 	}
 
 	public void init() {
@@ -99,6 +95,6 @@ public class ClawWrist extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new ChoosePosition(this, robot));
+		setDefaultCommand(new ChoosePosition(this));
 	}
 }
