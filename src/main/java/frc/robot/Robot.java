@@ -26,12 +26,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	// Subsystems
 	public final Drivetrain drivetrain = new Drivetrain();
-	private final Elevator elevator = new Elevator();
-	private final Beak beak = new Beak();
-	private final BeakWrist beakWrist = new BeakWrist();
-	private final Claw cargoClaw = new Claw();
-	private final ClawWrist clawWrist = new ClawWrist();
-	private final RampLatches rampLatches = new RampLatches();
+	public final Elevator elevator = new Elevator();
+	public final Beak beak = new Beak();
+	public final BeakWrist beakWrist = new BeakWrist();
+	public final Claw cargoClaw = new Claw();
+	public final ClawWrist clawWrist = new ClawWrist();
+	public final RampLatches rampLatches = new RampLatches();
 
 	// Cameras
 	private final int imgWidth = 160;
