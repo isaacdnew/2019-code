@@ -40,6 +40,7 @@ public class ClawWrist extends Subsystem {
 		m.config_kF(0, F);
 		m.configMaxIntegralAccumulator(0, 8);
 		m.setSelectedSensorPosition(0);
+		setPosition(ClawWristPosition.STOWED);
 	}
 
 	public void setPosition(ClawWristPosition position) {
