@@ -23,13 +23,16 @@ public class ChoosePosition extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (clawWrist.getPosition() == ClawWristPosition.LEVEL
-				&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
-			clawWrist.setPosition(ClawWristPosition.DOWN);
-		} else if (clawWrist.getPosition() == ClawWristPosition.DOWN
-				&& !SmartDashboard.getBoolean("Elevator at bottom", false)) {
-			clawWrist.setPosition(ClawWristPosition.LEVEL);
+		if (SmartDashboard.getBoolean("Beak is front", false)) {
+			clawWrist.setPosition(ClawWristPosition.STOWED);
 		} else {
+			if (clawWrist.getPosition() == ClawWristPosition.LEVEL
+					&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
+				clawWrist.setPosition(ClawWristPosition.DOWN);
+			} else if (clawWrist.getPosition() == ClawWristPosition.DOWN
+					&& !SmartDashboard.getBoolean("Elevator at bottom", false)) {
+				clawWrist.setPosition(ClawWristPosition.LEVEL);
+			}
 		}
 	}
 
