@@ -154,7 +154,6 @@ public class Drivetrain extends Subsystem {
 		} else {
 			swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
 		}
-		System.out.println(getHeading());
 	}
 
 	public double[] getWheelAngles() {
