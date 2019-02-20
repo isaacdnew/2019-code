@@ -25,7 +25,6 @@ public class ChoosePosition extends Command {
 	protected void execute() {
 		if (SmartDashboard.getBoolean("Beak is front", false)) {
 			clawWrist.setPosition(ClawWristPosition.STOWED);
-			System.out.println("beak is front; stowing");
 		} else {
 			if (clawWrist.getPosition() == ClawWristPosition.LEVEL
 					&& SmartDashboard.getBoolean("Elevator at bottom", false)) {
@@ -34,7 +33,6 @@ public class ChoosePosition extends Command {
 					&& !SmartDashboard.getBoolean("Elevator at bottom", false)) {
 				clawWrist.setPosition(ClawWristPosition.LEVEL);
 			}
-			System.out.println("beak is not front; normal");
 		}
 	}
 
