@@ -42,6 +42,7 @@ public class ClawWrist extends Subsystem {
 		m.config_kD(0, D);
 		m.config_kF(0, F);
 		m.configMaxIntegralAccumulator(0, 8);
+		m.configClosedLoopPeakOutput(0, 0.5);
 		m.setSelectedSensorPosition(0);
 		setPosition(ClawWristPosition.STOWED);
 	}
