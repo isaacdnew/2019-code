@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import frc.robot.commands.ResetDrivetrainEncoders;
+//import frc.robot.commands.ResetDrivetrainEncoders;
 import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -67,7 +67,8 @@ public class Robot extends TimedRobot {
 
 		// Other
 		oi = new OI(this);
-		SmartDashboard.putData("Reset Encoders", new ResetDrivetrainEncoders(drivetrain));
+		// SmartDashboard.putData("Reset Encoders", new
+		// ResetDrivetrainEncoders(drivetrain));
 	}
 
 	/**
