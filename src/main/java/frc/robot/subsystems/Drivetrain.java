@@ -149,10 +149,14 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void drive(double fwd, double strafe, double rotateCW) {
-		if (beakIsFront) {
-			swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+		if (centricMode == CentricMode.ROBOT) {
+			if (beakIsFront) {
+				swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+			} else {
+				swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
+			}
 		} else {
-			swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
+			swerveDrive.move(fwd, strafe, rotateCW, getHeading());
 		}
 	}
 
