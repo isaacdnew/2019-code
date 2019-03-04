@@ -25,7 +25,7 @@ public class TeleClaw extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		claw.move(-OI.deadBand(controller.getY(Hand.kRight)));
+		claw.move(-0.1 - OI.deadBand(controller.getY(Hand.kRight)));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
