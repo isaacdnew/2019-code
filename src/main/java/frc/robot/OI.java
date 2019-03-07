@@ -72,4 +72,30 @@ public class OI {
 				+ maxOutput;
 		return output;
 	}
+
+	public static double[] circularDeadBand(double x, double y) {
+		double[] output = { 0, 0 };
+		double radius = 0.2;
+		double maxOutput = 1;
+		assert (-1 < x && x < 1) : "x is less than -1 or greater than 1";
+		assert (-1 < y && y < 1) : "y is less than -1 or greater than 1";
+		assert (radius < maxOutput) : "deadband radius is greater than or equal to the maximum output";
+
+		double vectorMagnitude = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * ((x * y <= 0) ? -1 : 1);
+
+		if (vectorMagnitude > radius) {
+			output[0] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+		} else if (vectorMagnitude < -radius) {
+			output[0] = ((maxOutput * (x + maxOutput)) / (maxOutput - radius)) - maxOutput;
+			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+		}
+
+		assert (Math.abs(output[0]) <= maxOutput) : "output is too large! (expected less than " + maxOutput + "), got "
+				+ output[0];
+		assert (Math.abs(output[0]) <= maxOutput) : "output is too large! (expected less than " + maxOutput + "), got "
+				+ output[0];
+
+		return output;
+	}
 }
