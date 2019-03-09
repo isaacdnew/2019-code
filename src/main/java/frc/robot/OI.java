@@ -85,10 +85,10 @@ public class OI {
 
 		if (vectorMagnitude > radius) {
 			output[0] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
-			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+			output[1] = ((maxOutput * (y - maxOutput)) / (maxOutput - radius)) + maxOutput;
 		} else if (vectorMagnitude < -radius) {
 			output[0] = ((maxOutput * (x + maxOutput)) / (maxOutput - radius)) - maxOutput;
-			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+			output[1] = ((maxOutput * (y - maxOutput)) / (maxOutput - radius)) + maxOutput;
 		}
 
 		assert (Math.abs(output[0]) <= maxOutput) : "output is too large! (expected less than " + maxOutput + "), got "

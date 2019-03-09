@@ -156,7 +156,7 @@ public class Drivetrain extends Subsystem {
 				swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
 			}
 		} else {
-			swerveDrive.move(fwd, strafe, rotateCW, getHeading());
+			swerveDrive.move(-fwd, -strafe, rotateCW, getHeading());
 		}
 	}
 

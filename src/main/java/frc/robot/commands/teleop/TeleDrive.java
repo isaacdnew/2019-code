@@ -30,12 +30,11 @@ public class TeleDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		fwd = -controller.getY(Hand.kLeft);
-		strafe = controller.getX(Hand.kLeft);
-		fwdStrafe = OI.circularDeadBand(strafe, fwd);
+		fwd = OI.deadBand(-controller.getY(Hand.kLeft));
+		strafe = OI.deadBand(controller.getX(Hand.kLeft));
 		rotateCW = OI.deadBand(controller.getX(Hand.kRight));
 
-		drivetrain.drive(fwdStrafe[1], fwdStrafe[0], rotateCW);
+		drivetrain.drive(fwd, strafe, rotateCW);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
