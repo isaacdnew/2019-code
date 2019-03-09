@@ -32,7 +32,7 @@ public class TeleDrive extends Command {
 	protected void execute() {
 		fwd = -controller.getY(Hand.kLeft);
 		strafe = controller.getX(Hand.kLeft);
-		fwdStrafe = OI.circularDeadBand(strafe, fwd);
+		fwdStrafe = OI.circularExpDeadBand(strafe, fwd);
 		rotateCW = OI.deadBand(controller.getX(Hand.kRight));
 
 		drivetrain.drive(fwdStrafe[1], fwdStrafe[0], rotateCW);

@@ -56,46 +56,49 @@ public class OI {
 	public static double deadBand(double input) {
 		double output;
 		double radius = 0.2;
-		double maxOutput = 1;
-		assert (-1 < input && input < 1) : "input is less than -1 or greater than 1";
-		assert (radius < maxOutput) : "deadband radius is greater than or equal to the maximum output";
+		assert (-1 <= input && input <= 1) : "input is less than -1 or greater than 1";
+		assert (radius < 1) : "deadband radius is greater than or equal to the maximum output";
 
-		if (input > radius) {
-			output = ((maxOutput * (input - maxOutput)) / (maxOutput - radius)) + maxOutput;
+		if (input >= radius) {
+			output = ((1 * (input - 1)) / (1 - radius)) + 1;
 		} else if (input < -radius) {
-			output = ((maxOutput * (input + maxOutput)) / (maxOutput - radius)) - maxOutput;
+			output = ((1 * (input + 1)) / (1 - radius)) - 1;
 		} else {
 			output = 0;
 		}
 
-		assert (Math.abs(output) <= maxOutput) : "expected to output a smaller number than the maxOutput of "
-				+ maxOutput;
+		assert (Math.abs(output) <= 1) : "expected to output a smaller number than the 1 of " + 1;
 		return output;
 	}
 
-	public static double[] circularDeadBand(double x, double y) {
+	/**
+	 * @return a double[] with the x output in [0] and the y output in [1]
+	 */
+	public static double[] circularExpDeadBand(double x, double y) {
+		assert (-1 <= x && x <= 1) : "a is less than -1 or greater than 1";
+		assert (-1 <= y && y <= 1) : "b is less than -1 or greater than 1";
 		double[] output = { 0, 0 };
-		double radius = 0.2;
-		double maxOutput = 1;
-		assert (-1 < x && x < 1) : "x is less than -1 or greater than 1";
-		assert (-1 < y && y < 1) : "y is less than -1 or greater than 1";
-		assert (radius < maxOutput) : "deadband radius is greater than or equal to the maximum output";
 
-		double vectorMagnitude = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * ((x * y <= 0) ? -1 : 1);
-
-		if (vectorMagnitude > radius) {
-			output[0] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
-			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
-		} else if (vectorMagnitude < -radius) {
-			output[0] = ((maxOutput * (x + maxOutput)) / (maxOutput - radius)) - maxOutput;
-			output[1] = ((maxOutput * (x - maxOutput)) / (maxOutput - radius)) + maxOutput;
+		double radius = 0.15;
+		double exp = 1.5;
+		double inputVectMag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+		if (inputVectMag > 1) {
+			inputVectMag = 1;
 		}
 
-		assert (Math.abs(output[0]) <= maxOutput) : "output is too large! (expected less than " + maxOutput + "), got "
-				+ output[0];
-		assert (Math.abs(output[0]) <= maxOutput) : "output is too large! (expected less than " + maxOutput + "), got "
-				+ output[0];
+		if (inputVectMag > radius) {
+			double outputVectMag = Math.pow(((inputVectMag - 1) / (1 - radius)) + 1, exp);
+			if (x == 0) {
+				output[0] = 0;
+				output[1] = outputVectMag * Math.copySign(1.0, y);
+			} else {
+				output[0] = outputVectMag * Math.cos(Math.atan(y / x)) * Math.copySign(1.0, x);
+				output[1] = outputVectMag * Math.sin(Math.atan(y / x)) * Math.copySign(1.0, x);
+			}
+		}
 
+		assert (Math.abs(output[0]) <= 1) : "x output is too large! (expected less than 1; got " + output[0] + ")";
+		assert (Math.abs(output[1]) <= 1) : "y output is too large! (expected less than 1; got " + output[1] + ")";
 		return output;
 	}
 }
