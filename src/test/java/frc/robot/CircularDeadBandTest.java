@@ -3,7 +3,6 @@ package frc.robot;
 import org.junit.*;
 
 import frc.robot.OI;
-import frc.robot.Robot;
 
 public class CircularDeadBandTest {
 
